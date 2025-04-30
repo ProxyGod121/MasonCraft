@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic Block Builder</title>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: black; }
+        canvas { display: block; cursor: grab; }
+        #inventory { position: absolute; top: 10px; left: 10px; background-color: rgba(0, 0, 0, 0.5); color: white; padding: 10px; border: 1px solid white; z-index: 10; }
+        .inventory-slots { display: grid; grid-template-columns: repeat(3, 30px); grid-gap: 5px; margin-top: 5px; }
+        .slot { width: 30px; height: 30px; border: 1px solid gray; display: flex; justify-content: center; align-items: center; }
+        #crafting { position: absolute; top: 10px; right: 10px; background-color: rgba(0, 0, 0, 0.5); color: white; padding: 10px; border: 1px solid white; z-index: 10; }
+        .crafting-grid { display: grid; grid-template-columns: repeat(3, 30px); grid-template-rows: repeat(3, 30px); grid-gap: 5px; margin-bottom: 10px; }
+        .crafting-slot { width: 30px; height: 30px; border: 1px solid gray; display: flex; justify-content: center; align-items: center; }
+        #craft-button { padding: 5px 10px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        #crafting-result { margin-top: 10px; }
+    </style>
+    <style>
+        /* ... existing styles ... */
+        #crosshair {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgb(0, 0, 0);
+            border-radius: 50%;
+            pointer-events: none; /* Prevent it from interfering with clicks */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100; /* Ensure it's on top */
+        }
+    
+        #crosshair-inner {
+            width: 6px;
+            height: 6px;
+            background-color: white;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+    <div id="inventory">
+        <h2>Inventory</h2>
+        <div class="inventory-slots">
+            </div>
+    </div>
+    <div id="crafting">
+        <h2>Crafting</h2>
+        <div class="crafting-grid">
+            <div class="crafting-slot" data-slot="0"></div>
+            <div class="crafting-slot" data-slot="1"></div>
+            <div class="crafting-slot" data-slot="2"></div>
+            <div class="crafting-slot" data-slot="3"></div>
+            <div class="crafting-slot" data-slot="4"></div>
+            <div class="crafting-slot" data-slot="5"></div>
+            <div class="crafting-slot" data-slot="6"></div>
+            <div class="crafting-slot" data-slot="7"></div>
+            <div class="crafting-slot" data-slot="8"></div>
+        </div>
+        <button id="craft-button">Craft</button>
+        <div id="crafting-result"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js"></script>
+    <script src="blockTypes.js"></script>
+    <script src="utils.js"></script>
+    <script src="inventory.js"></script>
+    <script src="crafting.js"></script>
+    <script src="player.js"></script>
+    <script src="main.js"></script>
+    <script src="collison.js"></script>
+</body>
+<body>
+    <canvas id="gameCanvas"></canvas>
+    <div id="crosshair">
+        <div id="crosshair-inner"></div>
+    </div>
+    </body>
+</html>
